@@ -1,0 +1,37 @@
+Tablespace TB_COMERCIAL creado.
+
+Tablespace TB_FINANZAS creado.
+
+Error que empieza en la línea: 9 del comando :
+CREATE TABLESPACE TB_FINANZAS
+DATAFILE 'C:\BDORACLE\DF_FINANZAS_02.DBF'
+SIZE 10M
+Informe de error -
+Error SQL: ORA-01543: el tablespace 'TB_FINANZAS' ya existe
+01543. 00000 -  "tablespace '%s' already exists"
+*Cause:    Tried to create a tablespace which already exists
+*Action:   Use a different name for the new tablespace
+Tablespace TB_CONTABILIDAD creado.
+
+Tablespace TB_LOGISTICA creado.
+
+Error que empieza en la línea: 5 del comando :
+CREATE TABLESPACE TB_FINANZAS
+DATAFILE 'C:\PRACTICA\DF_FINANZAS_01.DBF'
+SIZE 10M
+Informe de error -
+Error SQL: ORA-01543: el tablespace 'TB_FINANZAS' ya existe
+01543. 00000 -  "tablespace '%s' already exists"
+*Cause:    Tried to create a tablespace which already exists
+*Action:   Use a different name for the new tablespace
+Error que empieza en la línea: 9 del comando :
+CREATE TABLESPACE TB_FINANZAS
+DATAFILE 'C:\PRACTICA\DF_FINANZAS_02.DBF'
+SIZE 10M
+Informe de error -
+Error SQL: ORA-01543: el tablespace 'TB_FINANZAS' ya existe
+01543. 00000 -  "tablespace '%s' already exists"
+*Cause:    Tried to create a tablespace which already exists
+*Action:   Use a different name for the new tablespace
+Tablespace TB_CONTABILIDAD alterado.
+

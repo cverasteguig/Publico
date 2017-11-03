@@ -1,0 +1,31 @@
+---CONSYULTAS
+--requiere un reporte mostrando los nombres, el salario y el puesto de los empleados. Observe  las 
+--cabeceras mostradas en el ejemplo:
+SELECT employee_id , FIRST_NAME, LAST_NAME,SALARY
+FROM    EMPLOYEES
+ORDER BY  EMPLOYEYEE_ID;
+
+--2)	Muestre a los empleados cuyo sueldo sea mayor o igual
+--a $3000, ordenado descendentemente por sueldo:
+SELECT employee_id, FIRST_NAME,LAST_NAME, SALARY
+FROM   employees
+WHERE  salary >= 3000;  
+
+--3)	Listar a los empleados que no reciben comisión, ordenando la lista por sueldo 
+--ascendentemente. (Tome en cuenta las cabeceras mostradas y la concatenación dela columna DATOS DE EMPLEADO)
+
+SELECT EMPLOYEE_ID ID, FIRST_NAME || ''|| LAST_NAME "DATOS DE EMPLEADO" , 'SUELDO','COMICION' 
+FROM EMPLOYEES;
+
+--4)	Muestre la estructura de la tabla EMPLOYEES.
+DESC JOBS
+DESCRIBE EMPLOYEES;
+SELECT * FROM EMPLOYEES;
+
+--5)Gnere un reporte de la tabla EMPLOYEES, mostrando una lista
+--de datos únicos en relación al campo JOB_ID.
+
+SELECT  job_id
+FROM   employees;
+
+       

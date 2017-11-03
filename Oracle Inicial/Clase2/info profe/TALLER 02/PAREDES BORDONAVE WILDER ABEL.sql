@@ -1,0 +1,64 @@
+ ------ TABLAS PARTICIONADAS---------------
+ 
+ ----------------------------------
+-- 1. CREACION DE TBS
+----------------------------------
+  CREATE TABLESPACE TBS_AUTOS
+  DATAFILE 'C:\TEMP\DF_AUTOS.DBF'
+  SIZE 100M;
+  
+  CREATE TABLESPACE TBS_CAMIONETAS
+  DATAFILE 'C:\TEMP\DF_CAMIONETAS.DBF'
+  SIZE 100M;
+  
+  CREATE TABLESPACE TBS_BUSES
+  DATAFILE 'C:\TEMP\DF_BUSES.DBF'
+  SIZE 100M;
+  
+ CREATE TABLESPACE TBS_CAMIONES
+  DATAFILE 'C:\TEMP\DF_CAMIONES.DBF'
+  SIZE 100M;
+
+ SELECT * FROM DBA_TABLESPACES;
+ 
+ 
+ ----------------------------------
+-- 2. TABLA PARTICIONADA POR LISTA
+----------------------------------
+
+CREATE TABLE VEHICULOS
+(ID NUMBER(10),
+ TIPO VARCHAR(10),
+ AÑO INTEGER,
+ PLACA VARCHAR(10))
+PARTITION BY LIST( TIPO)
+(PARTITION vehiculos_AUTOS  VALUES('AUTOS')    tablespace TBS_AUTOS,
+ PARTITION vehiculos_CAMIONETAS VALUES ('CAMIONETAS') tablespace TBS_CAMIONETAS,
+ PARTITION vehiculos_BUSES     VALUES ('BUSES')     tablespace TBS_BUSES,
+ PARTITION vehiculos_CAMIONES  VALUES('CAMIONES')   tablespace TBS_CAMIONES);
+
+
+-------------------------------------------------
+-- 3 INSERTANDO DATOS EN TABLAS PARTICIONADAS
+-------------------------------------------------
+INSERT INTO VEHICULOS
+SELECT LEVEL, 'AUTOS','2010','RH-154'
+FROM DUAL CONNECT BY LEVEL < 15000;
+ 
+INSERT INTO VEHICULOS
+SELECT LEVEL, 'BUSES','2010','RH-154'
+FROM DUAL CONNECT BY LEVEL < 25000;
+
+-------------------------------------------------
+-- 4 QUERY DE TABLAS PARTICIONADAS
+-------------------------------------------------
+SELECT * FROM VEHICULOS;
+
+SELECT * FROM VEHICULOS PARTITION ( vehiculos_AUTOS );
+ 
+-- 5. Insertar 5,000 MOTOS. ¿Qué sucede?. ¿Por qué?
+
+-- SUCEDE, QUE NO SE INGRESARA PORQUE NO ESTA CREADO.
+-- PORQUE? TENEMOS QUE CREAR LAS TABLAS PARTICIONADAS
+
+
